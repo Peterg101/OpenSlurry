@@ -1,0 +1,76 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Data Input Page
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<head>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/login.css')}}">
+<style>
+  body {
+        background-color: #e3e3e3;
+        background-size: cover;
+        color: black;
+        padding-bottom: 100px;
+
+}
+</style>
+</head>
+{% endblock %}
+
+{% block content %}
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{ url_for('landing_page') }}">OpenSlurry</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li ><a href="{{ url_for('how_to') }}">How to use the Database</a></li>
+        <li class = "active"><a href="{{ url_for('input_page') }}">Input Data</a></li>
+        <li><a href="{{ url_for('download_page') }}">Download the Database</a></li>
+        <li><a href = "{{ url_for('logout') }}">Log Out</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
+   <body>
+    <div class="container">
+
+      <form class="form-signin" method="POST" action="#" enctype = "multipart/form-data">
+        <h1 class = "form-signin-heading">  </h1>
+        <br>
+        <h2 class="starter-template">Please input your data:</h2>
+        <h1></h1>
+        <a href="{{ url_for('how_to') }}"">Click here to read about how to use the database.</a>
+        <h1></h1>
+        {{ form.hidden_tag() }}
+        {{ wtf.form_field(form.powder) }}
+        {{ wtf.form_field(form.dispersant) }}
+        {{wtf.form_field(form.solvent)}}
+        {{wtf.form_field(form.binderchainmass1)}}
+        {{wtf.form_field(form.binderchainmass2)}}
+        {{ wtf.form_field(form.binder1) }}
+        {{ wtf.form_field(form.binder2) }}
+        {{ wtf.form_field(form.maxparticle) }}
+        {{ wtf.form_field(form.minparticle) }}
+        {{ wtf.form_field(form.solventvol) }}
+        {{ wtf.form_field(form.powdervol) }}
+        {{ wtf.form_field(form.binder1vol) }}
+        {{ wtf.form_field(form.binder2vol) }}
+        {{ wtf.form_field(form.dispersantwt) }}
+        {{ wtf.form_field(form.rheo_data) }}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Upload Data</button>
+      </form>
+     </body>
+    </div> <!-- /container -->
+{% endblock %}

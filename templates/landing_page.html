@@ -1,0 +1,56 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<head>
+<link rel="stylesheet" href="{{url_for('.static', filename='starter-template.css')}}">
+<style>
+  body {padding-top: 275px;
+        background-image: url('https://cdn.wallpapersafari.com/21/3/JeiMq4.jpg') !important;
+        background-size: cover;
+        color: white;
+}
+</style>
+</head>
+{% endblock %}
+
+{% block content %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ url_for('landing_page') }}">OpenSlurry</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li ><a href="{{ url_for('how_to') }}">How to use the Database</a></li>
+            <li><a href="{{ url_for('input_page') }}">Input Data</a></li>
+            <li><a href="{{ url_for('download_page') }}">Download the Database</a></li>
+            <li><a href = "{{ url_for('logout') }}">Log Out</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+    <body>
+    <div class="container">
+
+      <div class="starter-template">
+
+        {% if message %}
+            <h3>{{ message }}</h3>
+        {% endif %}
+      </div>
+
+
+    </div><!-- /.container -->
+    </body>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+How to use the Database
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<head>
+<link rel="stylesheet" href="{{url_for('.static', filename='starter-template.css')}}">
+<style>
+  body {background-color: #e3e3e3;
+        background-size: cover;
+        color: black;
+        padding-top: 50px;
+
+}
+</style>
+</head>
+{% endblock %}
+
+{% block content %}
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{{ url_for('landing_page') }}">OpenSlurry</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class = "active"><a href="{{ url_for('how_to') }}">How to use the Database</a></li>
+            <li><a href="{{ url_for('input_page') }}">Input Data</a></li>
+            <li ><a href="{{ url_for('download_page') }}">Download the Database</a></li>
+            <li><a href = "{{ url_for('logout') }}">Log Out</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <body>
+      <div class="container">
+      <div class="header">
+        <h1>How to use the database:</h1>
+        <h3>The input data form has 14 entry boxes for the constituents of your slurry, and a file upload field:</h3>
+        <ol>
+          <li> "Powder" is the oxide powder  </li>
+          <li> "Dispersant" is the dispersing agent  </li>
+          <li> "Solvent" is the solvent  </li>
+          <li> "Binder chain mass 1" refers to the mass of the first binder.
+            If only one binder has been used, fill this field and input "none" in the "Binder chain mass 2 field"</li>
+          <li> "Binder chain mass 2" refers to the mass of the second binder.
+              If only one binder has been used, fill the "Binder chain mass 1" field and input "none" in this field"</li>
+          <li> "Binder 1" refers to the first binder, if only one binder has been used, fill this field and input "none" in the binder 2 field.</li>
+          <li> "Binder 2" refers to the second binder, if only one binder has been used, input "none" in this field and fill the "binder 1" field.</li>
+          <li> "Maximum particle size" refers to the powder particle size's upper limit. </li>
+          <li> "Minimum particle size" refers to the powder particle size's lower limit. </li>
+          <li> "Solvent Vol%" refers to the slurry's solvent volume percentage. </li>
+          <li>"Powder Vol%" refers to the slurry's powder volume percentage. </li>
+          <li> "Binder 1 Vol%" refers to the volume percentage of the first binder, if only one binder has been used, fill this field and input "none" in the Binder 2 vol% field.</li>
+          <li> "Binder 2 Vol%" refers to the volume percentage of the first binder, if only one binder has been used, input "none" in this field and fill the "Binder 1 vol%" field.</li>
+          <li> "Dispersant Wt%" refers to the weight percentage of the dispersant. </li>
+          <li> In the "Rheological Data" field, you upload a csv document containing the "stress-strain" data for your slurry.
+               This csv must contain only 2 columns with no headers, the left hand column must contain the "shear stress data" (Y),
+               whereas the right hand column must contain the "shear strain data" (X).</li>
+               <br>
+               <br>
+               <a href="{{ url_for('input_page') }}">Click here to begin inputting data</a>
+        </ol>
+
+
+      </div>
+    </body>
+
+
+{% endblock %}
